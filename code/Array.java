@@ -37,7 +37,6 @@ class Array extends BasicOperations {
     }
 
     private void insertion() {
-        int numberOfElements = myRandom.nextInt(5, 12);
         int i = 0;
         inputArray = new int[numberOfElements];
         System.out.println("============ Insertion ============");
