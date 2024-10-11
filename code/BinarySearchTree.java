@@ -1,7 +1,7 @@
 // Reference: https://www.youtube.com/watch?v=TbvhGcf6UJU&ab_channel=nptelhrd, https://www.geeksforgeeks.org/insertion-in-an-avl-tree/, https://www.baeldung.com/java-avl-trees
 import java.util.ArrayList;
   
-public class BST extends BasicOperations {
+public class BinarySearchTree extends BasicOperations {
     private Node root;
 
     private void elementInformation(Node node) {
@@ -232,7 +232,7 @@ public class BST extends BasicOperations {
     }
 
     public static void main(String[] args) { 
-        BSTree obj = new BSTree();
+        BinarySearchTree obj = new BinarySearchTree();
         obj.run();
     } 
 }
