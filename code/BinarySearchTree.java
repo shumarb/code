@@ -1,7 +1,7 @@
 // Reference: https://www.youtube.com/watch?v=TbvhGcf6UJU&ab_channel=nptelhrd, https://www.geeksforgeeks.org/insertion-in-an-avl-tree/, https://www.baeldung.com/java-avl-trees
 import java.util.ArrayList;
   
-public class BinarySearchTree extends BasicOperations {
+public class BST extends BasicOperations {
     private Node root;
 
     private void elementInformation(Node node) {
@@ -232,58 +232,7 @@ public class BinarySearchTree extends BasicOperations {
     }
 
     public static void main(String[] args) { 
-        BinarySearchTree obj = new BinarySearchTree();
+        BSTree obj = new BSTree();
         obj.run();
     } 
-}
-
-class Node {
-    private int data;
-    private int height;
-    private Node leftChild;
-    private Node rightChild;
-
-    public Node(int data) {
-        this.data = data;
-    }
-
-    public boolean hasLeftChild() {
-        return this.leftChild != null;
-    }
-
-    public boolean hasRightChild() {
-        return this.rightChild != null;
-    }
-
-    public int getsData() {
-        return this.data;
-    }
-
-    public int getsHeight() {
-        return this.height;
-    }
-
-    public Node getsLeftChild() {
-        return this.leftChild;
-    }
-
-    public Node getsRightChild() {
-        return this.rightChild;
-    }
-
-    public void setsData(int data) {
-        this.data = data;
-    }
-
-    public void setsHeight(int height) {
-        this.height = height;
-    }
-
-    public void setsLeftChild(Node leftChild) {
-        this.leftChild = leftChild;
-    }
-
-    public void setsRightChild(Node rightChild) {
-        this.rightChild = rightChild;
-    }
 }
