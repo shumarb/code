@@ -1,13 +1,8 @@
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Random;
 
-class SelectionSort {
-
-    private HashSet <Integer> set = new HashSet <> ();
+class SelectionSort extends BasicOperations {
     private int[] initialArray;
     private int[] inputArray;
-    private Random myRandom = new Random();
 
     private void displaysArray(String sentence, int[] inputArray, boolean isDisplaysNewLine, boolean isDisplaysLine) {
         displaysMessage(1, sentence, false, false);
@@ -29,64 +24,12 @@ class SelectionSort {
         displaysArray(" * After:\t[", inputArray, false, true);
     }
 
-    private void displaysLine() {
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------");
-    }
-
-    private void displaysMessage(int messageType, String message, boolean isDisplayNewLine, boolean isDisplayLine) {
-        if (messageType == 0) {
-            System.out.println(message);
-        } else {
-            System.out.print(message);
-        }
-        if (isDisplayNewLine) {
-            displaysNewLine();
-        }
-        if (isDisplayLine) {
-            displaysLine();
-        }
-    }
-
-    private void displaysNewLine() {
-        System.out.println();
-    }
-
-    private int formsData(boolean isDataPresent) {
-        int data;
-        if (isDataPresent) {
-            do {
-                data = myRandom.nextInt(-100, 101);
-            } while (!set.contains(data));
-        } else {
-            do {
-                data = myRandom.nextInt(-100, 101);
-            } while (set.contains(data));
-        }
-        return data;
-    } 
-
-    private void formsData() {
-        // Note that myRandom.nextInt(x, y) generates numbers in bound [x, y)
-        // Hence, to generate a number that is inclusive of both x and y: myRandom.nextInt(x, y + 1)
-        int data = formsData(false);
-        int order = myRandom.nextInt(0, 2);
-        for (int i = 0; i < myRandom.nextInt(5, 13); i++) {
-            if (order == 0) {
-                // Descending order of number to be inserted into the Array
-                // because Selection Sort sorts the elements in ascending order
-                set.add(data--);
-            } else {
-                set.add(formsData(false));
-            }
-        }
-    }
-
     private void insertion() {
         displaysLine();
         displaysMessage(0, "======= Insertion =======", false, false);
-        formsData();
-        inputArray = new int[set.size()];
+        inputArray = new int[numberOfElements];
         displaysMessage(0, "Forming an array with " + inputArray.length + " elements:", true, false);
+        formsData(numberOfElements);
         int i = 0;
         for (int data: set) {
             displaysMessage(0, " * Insert: " + data, true, false);
