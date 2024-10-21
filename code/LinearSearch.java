@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 
 class LinearSearch extends BasicOperations {
     private int[] inputArray;
@@ -16,7 +15,7 @@ class LinearSearch extends BasicOperations {
         displaysLine();
         displaysMessage(0, "======= Insertion =======", false, false);
         inputArray = new int[numberOfElements];
-        displaysMessage(0, "Forming an array with " + numberOfElements + " elements:", true, false);
+        displaysMessage(0, "Forming an array with " + inputArray.length + " elements:", true, false);
         formsData(numberOfElements);
         int i = 0;
         for (int data: set) {
@@ -31,7 +30,7 @@ class LinearSearch extends BasicOperations {
         displaysMessage(0, "======= Linear Search =======", false, false);
         displaysArray();
         for (int i = 0; i < 2; i++) {
-            List<Integer> elementsCheckedList = new ArrayList <> ();
+            ArrayList <Integer> elementsCheckedList = new ArrayList <> ();
             int key;
             if (i == 0) {
                 key = formsData(true);
