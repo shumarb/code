@@ -63,6 +63,7 @@ class BubbleSort extends BasicOperations {
         bubbleSort();
         displaysChange();
     }
+
     public static void main(String[] args) {
         BubbleSort obj = new BubbleSort();
         obj.run();
