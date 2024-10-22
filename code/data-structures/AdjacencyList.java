@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Collections;
+import java.util.List;
 
 class AdjacencyList extends BasicOperations {
     private List<ArrayList<IntegerPair>> adjacencyList = new ArrayList<ArrayList<IntegerPair>> ();
@@ -11,7 +11,7 @@ class AdjacencyList extends BasicOperations {
         for (int i = 0; i < adjacencyList.size(); i++) {
             displaysNewLine();
             System.out.print(" * Vertex " + getsVertex(i) + " | ");
-            ArrayList <IntegerPair> neighboursList = adjacencyList.get(i);
+            ArrayList<IntegerPair> neighboursList = adjacencyList.get(i);
             for (int j = 0; j < neighboursList.size(); j++) {
                 IntegerPair currentIntegerPair = neighboursList.get(j);
                 System.out.print("[" + currentIntegerPair.getsEndVertex() + ", W: " + currentIntegerPair.getsWeight() + "]");
@@ -26,8 +26,8 @@ class AdjacencyList extends BasicOperations {
         displaysLine();
     }
 
-    private ArrayList<String> formsPossibleNeighboursList(String currentVertex) {
-        ArrayList <String> availableVerticesList = new ArrayList <> ();
+    private List<String> formsPossibleNeighboursList(String currentVertex) {
+        List<String> availableVerticesList = new ArrayList<> ();
         for (int i = 0; i < verticesList.size(); i++) {
             if (!getsVertex(i).equals(currentVertex)) {
                 availableVerticesList.add(getsVertex(i));
@@ -36,7 +36,7 @@ class AdjacencyList extends BasicOperations {
         return availableVerticesList;
     }
 
-    private IntegerPair getsIntegerPair(ArrayList <IntegerPair> adjList, String neighbour) {
+    private IntegerPair getsIntegerPair(ArrayList<IntegerPair> adjList, String neighbour) {
         for (int i = 0; i < adjList.size(); i++) {
             IntegerPair currentIntegerPair = adjList.get(i);
             if (currentIntegerPair.getsEndVertex().equals(neighbour)) {
@@ -87,8 +87,8 @@ class AdjacencyList extends BasicOperations {
         displaysNewLine();
         for (int i = 0; i < verticesList.size(); i++) {
             String currentVertex = getsVertex(i);
-            ArrayList <String> possibleNeighboursList = formsPossibleNeighboursList(currentVertex);
-            ArrayList <IntegerPair> neighboursList = new ArrayList <> ();
+            List<String> possibleNeighboursList = formsPossibleNeighboursList(currentVertex);
+            ArrayList<IntegerPair> neighboursList = new ArrayList<> ();
             System.out.println(" * Vertex " + currentVertex + " | Possible neighbours: " + possibleNeighboursList);
             for (int j = 0; j < possibleNeighboursList.size(); j++) {
                 int weight = myRandom.nextInt(-100, 101);
@@ -120,11 +120,11 @@ class AdjacencyList extends BasicOperations {
         // ensure each vertex is in the other vertex's adjacency list
         for (int i = 0; i < adjacencyList.size(); i++) {
             String currentVertex = getsVertex(i);
-            ArrayList <IntegerPair> currentVertexAdjList = adjacencyList.get(i);
+            ArrayList<IntegerPair> currentVertexAdjList = adjacencyList.get(i);
             for (int j = 0; j < currentVertexAdjList.size(); j++) {
-                IntegerPair currPair = currentVertexAdjList.get(j);
-                String neighbourVertex = currPair.getsEndVertex();
-                int weight = currPair.getsWeight();
+                IntegerPair currentPair = currentVertexAdjList.get(j);
+                String neighbourVertex = currentPair.getsEndVertex();
+                int weight = currentPair.getsWeight();
                 if (!isContainNeighbour(adjacencyList.get(getsVertex(neighbourVertex)), currentVertex)) {
                     adjacencyList.get(getsVertex(neighbourVertex)).add(new IntegerPair(currentVertex, weight));
                 }
@@ -135,12 +135,12 @@ class AdjacencyList extends BasicOperations {
         // ensure the weight of the edge connecting the vertices to each other is the same
         for (int i = 0; i < adjacencyList.size(); i++) {
             String currentVertex = getsVertex(i);
-            ArrayList <IntegerPair> currentVertexAdjList = adjacencyList.get(i);
+            ArrayList<IntegerPair> currentVertexAdjList = adjacencyList.get(i);
             for (int j = 0; j < currentVertexAdjList.size(); j++) {
-                IntegerPair currPair = currentVertexAdjList.get(j);
-                IntegerPair toCheckPair = getsIntegerPair(adjacencyList.get(getsVertex(currPair.getsEndVertex())), currentVertex);
-                if (toCheckPair.getsWeight() != currPair.getsWeight()) {
-                    toCheckPair.setsWeight(currPair.getsWeight());
+                IntegerPair currentPair = currentVertexAdjList.get(j);
+                IntegerPair toCheckPair = getsIntegerPair(adjacencyList.get(getsVertex(currentPair.getsEndVertex())), currentVertex);
+                if (toCheckPair.getsWeight() != currentPair.getsWeight()) {
+                    toCheckPair.setsWeight(currentPair.getsWeight());
                 }
             }
         }
