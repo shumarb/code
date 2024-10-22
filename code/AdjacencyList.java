@@ -3,9 +3,8 @@ import java.util.List;
 import java.util.Collections;
 
 class AdjacencyList extends BasicOperations {
-
-    private ArrayList<ArrayList<IntegerPair>> adjacencyList = new ArrayList<ArrayList<IntegerPair>> ();
-    private ArrayList<String> verticesList = new ArrayList <> ();
+    private List<ArrayList<IntegerPair>> adjacencyList = new ArrayList<ArrayList<IntegerPair>> ();
+    private List<String> verticesList = new ArrayList <> ();
 
     private void displaysAdjacencyList() {
         System.out.println("Adjacency List: ");
@@ -27,7 +26,7 @@ class AdjacencyList extends BasicOperations {
         displaysLine();
     }
 
-    private ArrayList <String> formsPossibleNeighboursList(String currentVertex) {
+    private ArrayList<String> formsPossibleNeighboursList(String currentVertex) {
         ArrayList <String> availableVerticesList = new ArrayList <> ();
         for (int i = 0; i < verticesList.size(); i++) {
             if (!getsVertex(i).equals(currentVertex)) {
@@ -160,4 +159,5 @@ class AdjacencyList extends BasicOperations {
         AdjacencyList obj = new AdjacencyList();
         obj.run();
     }
+
 }
