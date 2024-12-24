@@ -68,4 +68,5 @@ class LinearSearch extends BasicOperations {
         LinearSearch obj = new LinearSearch();
         obj.run();
     }
+
 }
