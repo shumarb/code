@@ -1,30 +1,16 @@
 import java.util.Arrays;
 
 class QuickSort extends BasicOperations {
-    private int[] initialArray;
-    private int[] inputArray;
+    private static int[] initialArray;
+    private static int[] inputArray;
 
-    private void displaysArray(String sentence, int[] inputArray, boolean isDisplaysNewLine, boolean isDisplaysLine) {
-        displaysMessage(1, sentence, false, false);
-        for (int i = 0; i < inputArray.length - 1; i++) {
-            displaysMessage(1, inputArray[i] + " ", false, false);
-        }
-        displaysMessage(1, inputArray[inputArray.length - 1] + "]", true, false);
-        if (isDisplaysNewLine) {
-            displaysNewLine();
-        }
-        if (isDisplaysLine) {
-            displaysLine();
-        }
-    }
-
-    private void displaysChange() {
+    private static void displaysChange() {
         displaysMessage(0, "======= Quick Sort =======", false, false);
-        displaysArray(" * Before:\t[", initialArray, true, false);
-        displaysArray(" * After:\t[", inputArray, false, true);
+        displaysMessage(" * Before:\t" + Arrays.toString(initialArray), true, false);
+        displaysMessage(" * After:\t" + Arrays.toString(inputArray), false, true);
     }
 
-    private void insertion() {
+    private static void insertion() {
         displaysLine();
         displaysMessage(0, "======= Insertion =======", false, false);
         inputArray = new int[numberOfElements];
@@ -36,10 +22,10 @@ class QuickSort extends BasicOperations {
             inputArray[i++] = data;
         }
         initialArray = Arrays.copyOf(inputArray, inputArray.length);
-        displaysArray("Array: [", inputArray, false, true);
+        displaysMessage("Array: " + Arrays.toString(inputArray), false, true);
     }
 
-    private int partition(int[] inputArray, int lowIndex, int highIndex) {
+    private static int partition(int[] inputArray, int lowIndex, int highIndex) {
         // 1. Select last element of the partition as the pivot
         int pivot = inputArray[highIndex];
 
@@ -78,11 +64,11 @@ class QuickSort extends BasicOperations {
         return leftPointer;
     }
 
-    private void quickSort() {
+    private static void quickSort() {
         quickSort(inputArray, 0, inputArray.length - 1);
     }
 
-    private void quickSort(int[] inputArray, int lowIndex, int highIndex) {
+    private static void quickSort(int[] inputArray, int lowIndex, int highIndex) {
         if (lowIndex >= highIndex) {
             return;
         }
@@ -95,19 +81,16 @@ class QuickSort extends BasicOperations {
         quickSort(inputArray, pivotIndex + 1, highIndex);
     }
 
-    private void swap(int firstIndex, int secondIndex) {
+    private static void swap(int firstIndex, int secondIndex) {
         int temp = inputArray[firstIndex];
         inputArray[firstIndex] = inputArray[secondIndex];
         inputArray[secondIndex] = temp;
     }
 
-    private void run() {
+    public static void main(String[] args) {
         insertion();
         quickSort();
         displaysChange();
     }
-    public static void main(String[] args) {
-        QuickSort obj = new QuickSort();
-        obj.run();
-    }
+
 }

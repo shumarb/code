@@ -1,30 +1,16 @@
 import java.util.Arrays;
 
 class InsertionSort extends BasicOperations {
-    private int[] initialArray;
-    private int[] inputArray;
+    private static int[] initialArray;
+    private static int[] inputArray;
 
-    private void displaysArray(String sentence, int[] inputArray, boolean isDisplaysNewLine, boolean isDisplaysLine) {
-        displaysMessage(1, sentence, false, false);
-        for (int i = 0; i < inputArray.length - 1; i++) {
-            displaysMessage(1, inputArray[i] + " ", false, false);
-        }
-        displaysMessage(1, inputArray[inputArray.length - 1] + "]", true, false);
-        if (isDisplaysNewLine) {
-            displaysNewLine();
-        }
-        if (isDisplaysLine) {
-            displaysLine();
-        }
+    private static void displaysChange() {
+        displaysMessage("======= Insertion Sort =======", false, false);
+        displaysMessage(" * Before:\t" + Arrays.toString(initialArray), true, false);
+        displaysMessage(" * After:\t" + Arrays.toString(inputArray), false, true);
     }
 
-    private void displaysChange() {
-        System.out.println("======= Bubble Sort =======");
-        displaysArray(" * Before:\t[", initialArray, true, false);
-        displaysArray(" * After:\t[", inputArray, false, true);
-    }
-
-    private void insertion() {
+    private static void insertion() {
         displaysLine();
         displaysMessage(0, "======= Insertion =======", false, false);
         inputArray = new int[numberOfElements];
@@ -36,10 +22,10 @@ class InsertionSort extends BasicOperations {
             inputArray[i++] = data;
         }
         initialArray = Arrays.copyOf(inputArray, inputArray.length);
-        displaysArray("Array: [", inputArray, false, true);
+        displaysMessage("Array: [" + Arrays.toString(inputArray), false, true);
     }
 
-    private void insertionSort() {
+    private static void insertionSort() {
         for (int i = 1; i < inputArray.length; i++) {
             int currentElement = inputArray[i];
             int j = i - 1;
@@ -50,15 +36,10 @@ class InsertionSort extends BasicOperations {
         }
     }
 
-    private void run() {
+    public static void main(String[] args) {
         insertion();
         insertionSort();
         displaysChange();
-    }
-
-    public static void main(String[] args) {
-        InsertionSort obj = new InsertionSort();
-        obj.run();
     }
 
 }
