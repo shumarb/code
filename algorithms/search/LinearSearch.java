@@ -1,17 +1,10 @@
+import java.util.Arrays;
 import java.util.ArrayList;
 
 class LinearSearch extends BasicOperations {
-    private int[] inputArray;
+    private static int[] inputArray;
 
-    private void displaysArray() {
-        System.out.print("Array: [");
-        for (int i = 0; i < inputArray.length - 1; i++) {
-            System.out.print(inputArray[i] + " ");
-        }
-        System.out.println(inputArray[inputArray.length - 1] + "]");
-    }
-
-    private void insertion() {
+    private static void insertion() {
         displaysLine();
         displaysMessage(0, "======= Insertion =======", false, false);
         inputArray = new int[numberOfElements];
@@ -22,13 +15,12 @@ class LinearSearch extends BasicOperations {
             displaysMessage(0, " * Insert: " + data, true, false);
             inputArray[i++] = data;
         }
-        displaysArray();
+        displaysMessage(" * Array:\t" + Arrays.toString(inputArray), false, false);
         displaysLine();
     }
     
-    private void linearSearch() {
+    private static void linearSearch() {
         displaysMessage(0, "======= Linear Search =======", false, false);
-        displaysArray();
         for (int i = 0; i < 2; i++) {
             ArrayList <Integer> elementsCheckedList = new ArrayList <> ();
             int key;
@@ -64,7 +56,8 @@ class LinearSearch extends BasicOperations {
     }
 
     public static void main(String[] args) {
-        LinearSearch obj = new LinearSearch();
-        obj.run();
+        insertion();
+        linearSearch();
     }
+
 }
