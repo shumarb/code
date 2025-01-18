@@ -1,30 +1,22 @@
 import java.util.Arrays;
 
 class SelectionSort extends BasicOperations {
-    private int[] initialArray;
-    private int[] inputArray;
+    private static int[] initialArray;
+    private static int[] inputArray;
 
-    private void displaysArray(String sentence, int[] inputArray, boolean isDisplaysNewLine, boolean isDisplaysLine) {
-        displaysMessage(1, sentence, false, false);
-        for (int i = 0; i < inputArray.length - 1; i++) {
-            displaysMessage(1, inputArray[i] + " ", false, false);
-        }
-        displaysMessage(1, inputArray[inputArray.length - 1] + "]", true, false);
-        if (isDisplaysNewLine) {
-            displaysNewLine();
-        }
-        if (isDisplaysLine) {
-            displaysLine();
-        }
-    }
-
-    private void displaysChange() {
+    private static void displaysChange() {
         displaysMessage(0, "======= Selection Sort =======", false, false);
-        displaysArray(" * Before:\t[", initialArray, true, false);
-        displaysArray(" * After:\t[", inputArray, false, true);
+        displaysMessage(" * Before:\t" + Arrays.toString(initialArray), true, false);
+        displaysMessage(" * After:\t" + Arrays.toString(inputArray), false, true);
     }
 
-    private void insertion() {
+    protected static void swap(int[] n, int a, int b) {
+        int temp = n[a];
+        n[a] = n[b];
+        n[b] = temp;
+    }
+
+    private static void insertion() {
         displaysLine();
         displaysMessage(0, "======= Insertion =======", false, false);
         inputArray = new int[numberOfElements];
@@ -36,37 +28,27 @@ class SelectionSort extends BasicOperations {
             inputArray[i++] = data;
         }
         initialArray = Arrays.copyOf(inputArray, inputArray.length);
-        displaysArray("Array: [", inputArray, false, true);
+        displaysMessage("Array: [" + Arrays.toString(inputArray), false, true);
     }
 
-    private void selectionSort() {
-        for (int startIndex = 0; startIndex < inputArray.length - 1; startIndex++) {
-            boolean isSorted = true;
-            for (int nextIndex = startIndex + 1; nextIndex < inputArray.length; nextIndex++) {
-                if (inputArray[nextIndex] < inputArray[startIndex]) {
-                    isSorted = false;
-                    swap(nextIndex, startIndex);
+    private static void selectionSort() {
+        int n = inputArray.length;
+        for (int i = 0; i < n - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < n; j++) {
+                if (inputArray[j] < inputArray[i]) {
+                    minIndex = j;
                 }
             }
-            if (isSorted) {
-                break;
+            if (minIndex != i) {
+                swap(inputArray, i, minIndex);
             }
         }
     }
 
-    private void swap(int firstIndex, int secondIndex) {
-        int temp = inputArray[firstIndex];
-        inputArray[firstIndex] = inputArray[secondIndex];
-        inputArray[secondIndex] = temp; 
-    }
-
-    private void run() {
+   public static void main(String[] args) {
         insertion();
         selectionSort();
         displaysChange();
-    }
-    public static void main(String[] args) {
-        SelectionSort obj = new SelectionSort();
-        obj.run();
     }
 }

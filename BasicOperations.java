@@ -3,26 +3,26 @@ import java.util.Random;
 import java.util.Set;
 
 public class BasicOperations {
-    protected Set<Integer> set = new HashSet<> ();
-    protected Random myRandom = new Random();
-    protected int maximum = Integer.MIN_VALUE;
-    protected int minimum = Integer.MAX_VALUE;
-    protected int numberOfElements = myRandom.nextInt(5, 12);
+    protected static Set<Integer> set = new HashSet<> ();
+    protected static Random myRandom = new Random();
+    protected static int maximum = Integer.MIN_VALUE;
+    protected static int minimum = Integer.MAX_VALUE;
+    protected static int numberOfElements = myRandom.nextInt(5, 12);
 
-    protected void displaysLine() {
+    protected static void displaysLine() {
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------");
     }
 
-    protected void displaysNewLine() {
+    protected static void displaysNewLine() {
         System.out.println();
     }
 
-    protected void displaysTwoNewLines() {
+    protected static void displaysTwoNewLines() {
         System.out.println();
         System.out.println();
     }
 
-    protected void displaysMessage(String message, boolean isDisplayNewLine, boolean isDisplayLine) {
+    protected static void displaysMessage(String message, boolean isDisplayNewLine, boolean isDisplayLine) {
         System.out.println(message);
         if (isDisplayNewLine) {
             displaysNewLine();
@@ -32,7 +32,7 @@ public class BasicOperations {
         }
     }
 
-    protected void displaysMessage(int messageType, String message, boolean isDisplayNewLine, boolean isDisplayLine) {
+    protected static void displaysMessage(int messageType, String message, boolean isDisplayNewLine, boolean isDisplayLine) {
         if (messageType == 0) {
             System.out.println(message);
         } else {
@@ -46,11 +46,11 @@ public class BasicOperations {
         }
     }
 
-    protected void displaysMessage(String message) {
+    protected static void displaysMessage(String message) {
         System.out.print(message);
     }
 
-    protected int formsData(boolean isDataPresent) {
+    protected static int formsData(boolean isDataPresent) {
         int data;
         if (set.isEmpty()) {
             set = new HashSet<> ();
@@ -67,7 +67,7 @@ public class BasicOperations {
         return data;
     }
 
-    protected void formsData(int numberOfElements) {
+    protected static void formsData(int numberOfElements) {
         // Note that myRandom.nextInt(x, y) generates numbers in bound [x, y)
         // Hence, to generate a number that is inclusive of both x and y: myRandom.nextInt(x, y + 1)
         if (set.isEmpty()) {
