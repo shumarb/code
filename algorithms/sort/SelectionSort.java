@@ -51,4 +51,5 @@ class SelectionSort extends BasicOperations {
         selectionSort();
         displaysChange();
     }
+
 }
